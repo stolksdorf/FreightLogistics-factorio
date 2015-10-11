@@ -1,0 +1,9 @@
+{
+  "name": "freight-sensor",
+  "version": "0.1.0",
+  "title": "Freight Sensor",
+  "author": "stolksdorf",
+  "contact" : "scott.tolksdorf@gmail.com",
+  "description": "Adds a new entity for reading contents of freight trains to your circuit network",
+  "dependencies": ["base >= 0.12.0"]
+}

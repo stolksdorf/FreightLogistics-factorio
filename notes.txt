@@ -1,0 +1,4 @@
+- Rename Fright Logistics
+- Make a Fuel sensor (better name than sensor?)
+- Make a Freight Scheduler
+- 
