@@ -1,9 +1,9 @@
 {
-  "name": "freight-sensor",
-  "version": "0.1.0",
-  "title": "Freight Sensor",
-  "author": "stolksdorf",
-  "contact" : "scott.tolksdorf@gmail.com",
-  "description": "Adds a new entity for reading contents of freight trains to your circuit network",
-  "dependencies": ["base >= 0.12.0"]
+	"name": "FreightLogistics",
+	"version": "1.0.0",
+	"title": "Freight Logistics",
+	"author": "stolksdorf",
+	"contact" : "scott.tolksdorf@gmail.com",
+	"description": "Adds a items for controlling train schedules through the circuit network and reading train cargo and fuel",
+	"dependencies": ["base >= 0.12.0"]
 }

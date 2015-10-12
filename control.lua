@@ -1,31 +1,9 @@
-local config = require "config"
-local utils  = require "utils"
+local Mod = require "FAD.mod"
 
 --Mod Defintion
-local freightSensorMod = {
-	key        = "freightSensorMod",
-	blueprints = {},
-	entities   = {}
-}
+local FreightLogisticsMod = Mod.register("FreightLogisticsMod")
 
 --Entities
-local freightSensor = require("freightSensor.blueprint")
-local fuelSensor = require("fuelSensor.blueprint")
-local stopController = require("stopController.blueprint")
-
-
-
-local onTick = function(event)
-
-end
-
-
-
-
-freightSensorMod.blueprints[freightSensor.name] = freightSensor
-freightSensorMod.blueprints[fuelSensor.name] = fuelSensor
-freightSensorMod.blueprints[stopController.name] = stopController
-
-
-
-utils.addModToGame(freightSensorMod, onTick)
+FreightLogisticsMod.addSchematic(require "freightSensor.schematic")
+FreightLogisticsMod.addSchematic(require "fuelSensor.schematic")
+FreightLogisticsMod.addSchematic(require "stopController.schematic")
