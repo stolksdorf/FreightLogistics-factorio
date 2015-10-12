@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require "FAD.utils"
 
 
 local function getTrain(entity)
@@ -6,13 +6,12 @@ local function getTrain(entity)
 end
 
 
---[[ BLUEPRINT ]]--
+--[[ Schematic ]]--
 
-FuelSensorBlueprint = {
+FuelSensorSchematic = {
 	name="fuel_sensor",
 	updateRateBySecond = 0.5,
 	onPlace = function(entity, storage)
-		debug("Placed a Fuel sensor!")
 		--Doesn't open a menu when clicked
 		entity.operable = false
 	end,
@@ -20,8 +19,6 @@ FuelSensorBlueprint = {
 	onUpdate = function(entity, storage, event)
 		local fuelItems = {}
 		local fuelSignals = {}
-
-		utils.print(entity.direction)
 
 		for _,entityNearby in utils.getNearbyEntities(entity) do
 			local isTrain,train=pcall(getTrain,entityNearby)
@@ -39,10 +36,10 @@ FuelSensorBlueprint = {
 			end
 		end
 		utils.setCircuitCondition(entity, {
-			item=fuelItems,
-			virtual=fuelSignals
+			item    = fuelItems,
+			virtual = fuelSignals
 		})
 	end
 }
 
-return FuelSensorBlueprint
+return FuelSensorSchematic
