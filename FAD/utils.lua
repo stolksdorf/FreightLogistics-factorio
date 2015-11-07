@@ -1,6 +1,6 @@
 local config = require "config"
 
-utils = {}
+local utils = {}
 
 --Converts any type, including tables into a string
 local AnyToString = function(arg)
@@ -154,9 +154,6 @@ utils.mergeTables = function(...)
 	end
 	return res
 end
-
-
-
 
 
 return utils

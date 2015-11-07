@@ -1,14 +1,15 @@
-local utils = require "FAD.utils"
-local GUI = require "FAD.gui"
-local Mod = require "FAD.mod"
+utils = require("FAD.utils")
+GUI = require("FAD.gui")
+Mod = require("FAD.mod")
 
 
-local function getTrain(entity)
+
+function getTrain(entity)
 	return entity.train
 end
 
 
-local hasStop = function(schedule, stationName)
+hasStop = function(schedule, stationName)
 	if type(schedule.records) == "table" and next(schedule.records) then
 		for idx,stop in pairs(schedule.records) do
 			if stationName == stop.station then
@@ -19,19 +20,19 @@ local hasStop = function(schedule, stationName)
 	return false
 end
 
-local addStop = function(schedule, stationName, duration)
+addStop = function(schedule, stationName, duration)
 	duration = duration or 1800
 	if type(schedule.records) ~= "table" then
 		schedule.records = {}
 	end
 	table.insert(schedule.records, {
-		station=stationName,
-		time_to_wait=duration
+		station      = stationName,
+		time_to_wait = duration
 	})
 	return schedule
 end
 
-local removeStop = function(schedule, stationName)
+removeStop = function(schedule, stationName)
 	if type(schedule.records) == "table" and next(schedule.records) then
 		for idx,stop in ipairs(schedule.records) do
 			if stationName == stop.station then
@@ -44,7 +45,7 @@ local removeStop = function(schedule, stationName)
 end
 
 
-local drawIndicator = function(entity, storage, state)
+drawIndicator = function(entity, storage, state)
 	if utils.isValid(storage.indicator) then
 		storage.indicator.destroy()
 	end
@@ -57,17 +58,17 @@ end
 
 
 
-local updateGUI = function(storage)
+updateGUI = function(storage)
 	storage.gui.stop_name_input.text = storage.stopName
 	storage.gui.duration_container.duration_val.caption = storage.duration/60 .."s"
 end
 
-local saveFromGUI = function(storage)
+saveFromGUI = function(storage)
 	storage.stopName = storage.gui.stop_name_input.text
 end
 
 
-local StopControllerGUI = GUI.register({
+StopControllerGUI = GUI.register({
 	type="frame",
 	name="stop_controller_frame",
 	caption={"stc_window_title"},
@@ -118,21 +119,33 @@ local StopControllerGUI = GUI.register({
 
 --[[ SCHEMATIC ]]--
 
-StopControllerSchematic = {
+Mod.addSchematic({
 	name="stop_controller",
 	updateRateBySecond = 0.25,
 	onPlace = function(entity, storage)
+
+		utils.print('Placed stop controller')
+
 		storage.indicator = entity.surface.create_entity{name = "indicator_orange", position = entity.position}
 		storage.stopName = ""
 		storage.duration = 1800
 	end,
 	onDestroy = function(entity, storage)
+
+		utils.print('Removed stop controller')
+
 		if utils.isValid(storage.indicator) then
 			storage.indicator.destroy()
 		end
 		GUI.destroy(storage.gui)
 	end,
 	onUpdate = function(entity, storage, event)
+
+		--local utils = require("FAD.utils")
+
+		--utils.print(Mod)
+
+
 		local condFulfilled = entity.get_circuit_condition(1).fulfilled
 
 		--Update the indicator Light
@@ -177,6 +190,4 @@ StopControllerSchematic = {
 		end
 
 	end
-}
-
-return StopControllerSchematic
+})

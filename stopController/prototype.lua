@@ -17,6 +17,19 @@ data:extend({
 		result = "stop_controller"
 	},
 
+
+	--FAKE Recipe
+	{
+		type = "recipe",
+		name = "stop_controller",
+		enabled = true,
+		ingredients =
+		{
+			{"iron-plate", 1},
+		},
+		result = "stop_controller"
+	},
+
 	--Item
 	{
 		type = "item",

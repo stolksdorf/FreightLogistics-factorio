@@ -1,4 +1,4 @@
-local utils = require "FAD.utils"
+local utils = require("FAD.utils")
 
 
 local function getTrain(entity)
@@ -37,7 +37,7 @@ FreightSensorSchematic = {
 	onUpdate = function(entity, storage, event)
 		local items = {}
 		local fluids = {}
-		for i,entityNearby in utils.getNearbyEntities(entity) do
+		for i, entityNearby in utils.getNearbyEntities(entity) do
 			local isTrain,train=pcall(getTrain,entityNearby)
 			if isTrain then
 				for i,cargoWagon in ipairs(train.cargo_wagons) do

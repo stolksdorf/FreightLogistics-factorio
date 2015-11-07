@@ -1,5 +1,6 @@
 config = {
-	DEBUG = true
+	DEBUG = true,
+	modName = 'FreightLogistics'
 }
 
 return config

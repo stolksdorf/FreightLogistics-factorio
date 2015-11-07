@@ -69,6 +69,6 @@ end
 
 
 --Register the gui click handler with the game
-game.on_event(defines.events.on_gui_click, handleGUIClick)
+script.on_event(defines.events.on_gui_click, handleGUIClick)
 
 return gui

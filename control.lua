@@ -1,9 +1,21 @@
-local Mod = require "FAD.mod"
+utils = require('FAD.utils')
+Mod = require("FAD.mod")
 
---Mod Defintion
-local FreightLogisticsMod = Mod.register("FreightLogisticsMod")
+
+require("stopController.schematic")
+
+
+Mod.addOnTickListener(function()
+	--utils.print('working!')
+end)
+
+
+
+
+
+
 
 --Entities
-FreightLogisticsMod.addSchematic(require "freightSensor.schematic")
-FreightLogisticsMod.addSchematic(require "fuelSensor.schematic")
-FreightLogisticsMod.addSchematic(require "stopController.schematic")
+--Mod.addSchematic(require "freightSensor.schematic")
+--Mod.addSchematic(require "fuelSensor.schematic")
+
